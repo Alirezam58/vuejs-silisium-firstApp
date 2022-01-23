@@ -13,19 +13,19 @@
             <div class="col-md-8 mx-auto">
                 <h1 class="text-center m-3">Course</h1>
                 <hr>
-                <p>{{course}}</p>
+                <p>{{course}} &nbsp <strong class="text-danger">{{isPopular}}</strong></p>
                 <p>{{author}}</p>
                 <p>{{description}}</p>
-                <p class="text-danger">{{videos}}</p>
+                <p class="text-danger">{{likes}}</p>
                 <hr>
                 <p>Course : <input v-model="course"> </p>
                 <p>Author : <input v-model="author"> </p>
                 <p>Descrp : <input v-model="description"></p>
-                <p style="display: inline;">Videos : 
-                    <button class="btn btn-success mr-2" @click="videos++">+</button>
-                    <p style="display: inline;">{{videos}}</p>
-                    <button class="btn btn-danger ml-2" @click="videos--">-</button>
-                    <button class="btn btn-warning ml-2" @click="videos=''">Clear</button>
+                <p style="display: inline;">likes : 
+                    <button class="btn btn-success mr-2" @click="likes++">+</button>
+                    <p style="display: inline;">{{likes}}</p>
+                    <button class="btn btn-danger ml-2" @click="likes--">-</button>
+                    <button class="btn btn-warning ml-2" @click="clearAll('All Cleared')">Clear</button>
                 </p>
             </div>
         </div>
@@ -42,10 +42,27 @@
                    course:"javascript",
                    author:"Mojtabaei",
                    description:"javascript is cool",
-                   videos:10
+                   likes:10
+                }
+            },
+            methods : {
+                clearAll(msg){
+                    this.course = '';
+                    this.author = '';
+                    this.description = '';
+                    this.likes = '';
+                    console.log(msg);
+                }
+            }, 
+            computed :{
+                    isPopular(){
+                        if(this.likes >= 11){
+                    return ("Popular")
                 }
             }
-        })
+        }
+            
+    })
 
         app.mount("#app")
     </script>
