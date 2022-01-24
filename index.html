@@ -60,11 +60,18 @@
                     return ("Popular")
                 }
             }
+        },
+        watch :{
+            likes (value){
+                if(value == 12){
+                    alert('Congrats... You reached 12 Likes')
+                }
+            }
         }
             
     })
 
-        app.mount("#app")
+    app.mount("#app")
     </script>
 </body>
 </html>
